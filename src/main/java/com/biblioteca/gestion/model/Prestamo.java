@@ -23,8 +23,7 @@ public class Prestamo {
     private Usuario usuario;
 
     private LocalDate fechaRetiro;
-    private LocalDate fechaPrevistaDevolucion;
-    private LocalDate fechaRealDevolucion;
+    private LocalDate fechaVencimiento;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "prestamo_libro",
