@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -24,23 +26,34 @@ public class PrestamoServiceImpl implements IPrestamoService {
 
     @Override
     public Prestamo registrarPrestamo(Prestamo prestamo) {
-        //validar datos registrados antes del guardado
-        Usuario usuario = prestamo.getUsuario();
-        if(usuarioService.buscarPorDni(usuario.getDni()) != null){
-            usuarioService.crearUsuario(usuario);
+        Usuario usuarioExistente = usuarioService.buscarPorDni(prestamo.getUsuario().getDni());
+
+        if (usuarioExistente != null) {//valido si el usuario ya esta registrado
+            prestamo.setUsuario(usuarioExistente);
+        } else {
+            usuarioService.crearUsuario(prestamo.getUsuario()); //Si el usuario no existe lo guardo primero
         }
 
         return prestamoRepository.save(prestamo);
     }
 
+
     @Override
     public List<Prestamo> consultrarPrestamosPorUsuario(Usuario usuario) {
-        return null;
+        List<Prestamo> listaPrestamosBD = prestamoRepository.findAll();
+        List<Prestamo> listaPrestamosUsuario = new ArrayList<>();
+
+        listaPrestamosUsuario = listaPrestamosBD.stream()
+                .filter(prestamo -> prestamo.getUsuario().getDni().equals(usuario.getDni()))
+                .collect(Collectors.toList());
+
+        return listaPrestamosUsuario;
     }
 
     @Override
     public List<Prestamo> consultarPrestamosPorFechaVenc(LocalDate fechaVencConsultada) {
-        return null;
+        System.out.println(fechaVencConsultada);
+        return prestamoRepository.findByFechaVencimiento(fechaVencConsultada);
     }
 
     @Override

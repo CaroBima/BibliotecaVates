@@ -20,6 +20,8 @@ public class Usuario {
 
     private String nombre;
     private String apellido;
+
+    @Column(unique = true)
     private String dni;
 
     @OneToMany(cascade = CascadeType.ALL)
