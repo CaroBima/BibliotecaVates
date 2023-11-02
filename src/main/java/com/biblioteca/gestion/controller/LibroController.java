@@ -36,7 +36,19 @@ public class LibroController {
 
     @GetMapping("/busqueda/titulo/{titulo}")
     public List<Libro> buscarPorTitulo(@PathVariable String titulo) {
+
         return libroService.findLibroTitulo(titulo);
     }
 
+    @GetMapping("/busqueda/autor/{autor}")
+    public List<Libro> buscarPorAutor(@PathVariable String autor) {
+
+        return libroService.findLibroAutor(autor);
+    }
+
+    @GetMapping("/busqueda/genero/{genero}")
+    public List<Libro> buscarPorGenero(@PathVariable String genero) {
+
+        return libroService.findLibroGenero(genero);
+    }
 }

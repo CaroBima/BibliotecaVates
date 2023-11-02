@@ -8,11 +8,12 @@ public interface ILibroService {
     Libro guardarLibro(Libro libro);
     Libro editarLibro(Libro libroEditado);
     void borrarLibro(Long idABorrar);
-    List<Libro> buscarPorTitulo(String titulo);
-    List<Libro> buscarPorAutor(String nombreAutor);
-    List<Libro> buscarPorGenero(String genero);
 
     List<Libro> findAll();
 
     List<Libro> findLibroTitulo(String titulo);
+
+    List<Libro> findLibroAutor(String autor);
+
+    List<Libro> findLibroGenero(String genero);
 }

@@ -52,4 +52,14 @@ public class LibroServiceImpl implements ILibroService {
     public List<Libro> findLibroTitulo(String titulo) {
         return libroRepository.findByTitulo(titulo);
     }
+
+    @Override
+    public List<Libro> findLibroAutor(String autor) {
+        return libroRepository.findByAutor(autor);
+    }
+
+    @Override
+    public List<Libro> findLibroGenero(String genero) {
+        return libroRepository.findByGenero(genero);
+    }
 }
