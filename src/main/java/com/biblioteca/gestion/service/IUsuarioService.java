@@ -8,5 +8,5 @@ public interface IUsuarioService {
     Usuario crearUsuario(Usuario usuario);
     Usuario buscarPorId(Long id);
     List<Usuario> buscarXApellidoYNombre(String apellido, String nombre);
-    List<Usuario> buscarPorDni(String dni);
+    Usuario buscarPorDni(String dni);
 }

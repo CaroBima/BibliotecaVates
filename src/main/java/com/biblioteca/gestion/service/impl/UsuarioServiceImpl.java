@@ -4,9 +4,11 @@ import com.biblioteca.gestion.model.Usuario;
 import com.biblioteca.gestion.repository.IUsuarioRepository;
 import com.biblioteca.gestion.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     IUsuarioRepository usuarioRepository;
@@ -27,7 +29,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<Usuario> buscarPorDni(String dni) {
-        return null;
+    public Usuario buscarPorDni(String dni) {
+
+        return usuarioRepository.findByDni(dni);
     }
 }
