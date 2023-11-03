@@ -33,4 +33,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
         return usuarioRepository.findByDni(dni);
     }
+
+    @Override
+    public List<Usuario> buscarUsuarios() {
+        return usuarioRepository.findAll();
+    }
 }

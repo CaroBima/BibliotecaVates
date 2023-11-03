@@ -7,7 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
+/**
+ * Representa un usuario de la biblioteca
+ *
+ * Esta clase encapsula la información detallada de un usuario: incluyendo dni, nombre, apellido y
+ * una lista de los prestamos solicitados
+ */
 @Getter
 @Setter
 @NoArgsConstructor

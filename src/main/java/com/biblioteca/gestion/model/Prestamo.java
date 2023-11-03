@@ -19,13 +19,13 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Usuario usuario;
 
     private LocalDate fechaRetiro;
     private LocalDate fechaVencimiento;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "prestamo_libro",
             joinColumns = @JoinColumn(name = "prestamo_id"),
             inverseJoinColumns = @JoinColumn(name = "libro_id" ))
