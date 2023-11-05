@@ -31,7 +31,7 @@ public class PrestamoController {
         return prestamoService.consultarPrestamosPorFechaVenc(fechaVencimiento);
     }
 
-    @PostMapping("/busqueda/porUsuario")
+    @PostMapping("/busqueda/usuario")
     public List<Prestamo> buscarPorUsuario(@RequestBody Usuario usuario){
         return prestamoService.consultrarPrestamosPorUsuario(usuario);
     }

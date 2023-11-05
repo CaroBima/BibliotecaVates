@@ -40,24 +40,27 @@ public class PrestamoServiceImpl implements IPrestamoService {
 
     @Override
     public List<Prestamo> consultrarPrestamosPorUsuario(Usuario usuario) {
-        List<Prestamo> listaPrestamosBD = prestamoRepository.findAll();
+        /*List<Prestamo> listaPrestamosBD = prestamoRepository.findAll();
         List<Prestamo> listaPrestamosUsuario = new ArrayList<>();
 
         listaPrestamosUsuario = listaPrestamosBD.stream()
                 .filter(prestamo -> prestamo.getUsuario().getDni().equals(usuario.getDni()))
                 .collect(Collectors.toList());
 
-        return listaPrestamosUsuario;
+        return listaPrestamosUsuario;*/
+
+        return prestamoRepository.findByDni(usuario.getDni());
     }
 
     @Override
     public List<Prestamo> consultarPrestamosPorFechaVenc(LocalDate fechaVencConsultada) {
-        System.out.println(fechaVencConsultada);
+
         return prestamoRepository.findByFechaVencimiento(fechaVencConsultada);
     }
 
     @Override
     public List<Prestamo> findAll() {
+
         return prestamoRepository.findAll();
     }
 }

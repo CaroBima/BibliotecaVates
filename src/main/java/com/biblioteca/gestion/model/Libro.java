@@ -19,7 +19,10 @@ import java.util.List;
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idLibro;
+
+    @Column(unique = true, nullable = false)
+    private Long isbn;
 
     private String titulo;
 

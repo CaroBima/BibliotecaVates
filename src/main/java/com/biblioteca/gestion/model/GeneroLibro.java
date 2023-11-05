@@ -14,7 +14,7 @@ import lombok.Setter;
 public class GeneroLibro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idGeneroLibro;
 
     //@ManyToMany(mappedBy = "listaGeneros")
     private String genero;

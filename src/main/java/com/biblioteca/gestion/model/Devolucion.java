@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Devolucion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idDevolucion;
 
     @OneToOne
     private Prestamo prestamo;

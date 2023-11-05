@@ -16,7 +16,7 @@ import java.util.List;
 public class Editorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEditorial;
     private String nombre;
 
     @OneToMany//(mappedBy = "listaTemas", fetch=FetchType.LAZY)
