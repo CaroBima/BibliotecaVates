@@ -3,6 +3,7 @@ package com.biblioteca.gestion.controller;
 import com.biblioteca.gestion.model.Libro;
 import com.biblioteca.gestion.service.ILibroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,14 @@ public class LibroController {
         return libroService.findAll();
     }
 
+
+    /**
+     * Permite guardar un nuevo libro en la base de datos
+     * @param nuevoLibro
+     * @return ResponseEntity que indica si el valor ha podido ser guardado
+     */
     @PostMapping("/nuevo")
-    public Libro crearLibro(@RequestBody Libro nuevoLibro){
+    public ResponseEntity<Libro> crearLibro(@RequestBody Libro nuevoLibro){
         return libroService.guardarLibro(nuevoLibro);
     }
 

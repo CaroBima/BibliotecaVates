@@ -19,4 +19,7 @@ public interface ILibroRepository extends JpaRepository<Libro, Long> {
     @Query(value = "Select l.* from libro l, genero_libro g, libro_genero lg where l.id = lg.libro_id and g.id = lg.generolibro_id and g.genero LIKE CONCAT('%', :genero, '%')", nativeQuery = true)
     List<Libro> findByGenero(@Param("genero") String genero);
 
+    @Query(value = "Select * from libro where isbn= :isbn",  nativeQuery = true)
+    Libro findByIsbn(@Param("isbn") String isbn);
+
 }
