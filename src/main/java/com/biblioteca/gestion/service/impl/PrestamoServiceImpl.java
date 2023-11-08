@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Service
@@ -45,15 +46,16 @@ public class PrestamoServiceImpl implements IPrestamoService {
             usuarioService.crearUsuario(prestamo.getUsuario()); //Si el usuario no existe lo guardo primero
         }
 
-        for (int i = 0; i < prestamo.getListaDeLibros().size(); i++) {
-            Libro libroExistente = libroService.findLibroIsbn(prestamo.getListaDeLibros().get(i).getIsbn());
+        IntStream.range(0, prestamo.getListaDeLibros().size())
+                .forEach(i -> {
+                    Libro libroExistente = libroService.findLibroIsbn(prestamo.getListaDeLibros().get(i).getIsbn());
 
-            if (libroExistente != null && libroExistente.getIsbn() != null) {
-                prestamo.getListaDeLibros().set(i, libroExistente); // el libro ya estaba en la bbdd, lo seteo en la lista de prestamos
-            } else {
-                libroService.guardarLibro(prestamo.getListaDeLibros().get(i)); // el libro no está guardado, lo guardo
-            }
-        }
+                    if (libroExistente != null && libroExistente.getIsbn() != null) {
+                        prestamo.getListaDeLibros().set(i, libroExistente); //el libro ya estaba en la bbdd, lo seteo en la lista de prestamos
+                    } else {
+                        libroService.guardarLibro(prestamo.getListaDeLibros().get(i));// el libro no está guardado, lo guardo
+                    }
+                });
 
         return prestamoRepository.save(prestamo);
     }
