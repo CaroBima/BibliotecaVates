@@ -3,5 +3,5 @@ Gestión de prestamo de libros de una biblioteca - Trabajo final del curso de ja
 
 ## Pendiente:
 
-* Uso de @NamedQueries en vez de @Queries
+* Uso de @NamedQueries en vez de @Queries.
 * Crea un informe de los libros más populares en un periodo de días.
