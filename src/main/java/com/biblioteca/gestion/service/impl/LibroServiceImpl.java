@@ -20,8 +20,8 @@ public class LibroServiceImpl implements ILibroService {
      * Permite guardar un libro nuevo. Valida primero por el isbn si el libro ya se encuentra guardado, si no lo está
      * lo guarda. Si el libro está devuelve el libro que ya se encuentra guardado en la base de datos.
      * @param libro
-     * @return ResponseEntity Created en caso de que se cree ok, Conflict en caso de que el libro ya haya estado guardado
-     * o Server Error en caso de haber alguna excepcion
+     * @return ResponseEntity Created en caso de que se cree ok, Conflict en caso de que el libro ya haya estado
+     * previamente guardado o Server Error en caso de haber alguna excepcion
      */
     @Override
     public ResponseEntity<Libro> guardarLibro(Libro libro) {

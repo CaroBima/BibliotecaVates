@@ -21,6 +21,6 @@ public class Devolucion {
     @OneToOne
     private Prestamo prestamo;
 
-    private LocalDate fechaDevolución;
+    private LocalDate fechaDevolucion;
     private double multa;
 }
