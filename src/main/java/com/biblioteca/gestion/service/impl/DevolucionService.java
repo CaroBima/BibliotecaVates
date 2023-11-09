@@ -21,8 +21,8 @@ public class DevolucionService implements IDevolucionService {
     public ResponseEntity<Devolucion> registrarDevolucion(Devolucion devolucion) {
 
         Devolucion fueDevuelto = this.buscarByIdPrestamo(devolucion.getPrestamo().getIdPrestamo());
-        //busca si el id del prestamo ya esta registrado como devuelto:
-        if(fueDevuelto == null){ //El libro no fue devuelto, no esta registrado como devuelto
+
+        if(fueDevuelto == null){ //si no esta registrado como devuelto, lo guarda
             devolucion.setMulta(this.calcularMulta(devolucion.getPrestamo().getFechaVencimiento(), devolucion.getFechaDevolucion()));
             try {
                 devolucionRepository.save(devolucion);
