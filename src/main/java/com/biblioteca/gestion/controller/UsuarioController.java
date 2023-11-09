@@ -2,7 +2,9 @@ package com.biblioteca.gestion.controller;
 
 import com.biblioteca.gestion.model.Usuario;
 import com.biblioteca.gestion.service.IUsuarioService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +23,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/nuevo")
-    public Usuario crearLibro(@RequestBody Usuario nuevoUsuario){
+    public ResponseEntity<Usuario> crearLibro(@RequestBody Usuario nuevoUsuario){
+
         return usuarioService.crearUsuario(nuevoUsuario);
     }
 
