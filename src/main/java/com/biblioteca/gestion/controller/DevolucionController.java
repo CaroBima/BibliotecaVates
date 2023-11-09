@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador para gestionar las operaciones relacionadas con las devoluciones de los prestamos.
+ */
 @RestController
 @RequestMapping("/devolucion")
 public class DevolucionController {
@@ -18,6 +21,12 @@ public class DevolucionController {
     @Autowired
     IDevolucionService devolucionService;
 
+    /**
+     * Registra una devolución.
+     *
+     * @param devolucion La devolución a registrar.
+     * @return ResponseEntity con la devolución registrada.
+     */
     @PostMapping("/registro")
     public ResponseEntity<Devolucion> registrarDevolucion(@RequestBody Devolucion devolucion){
         return devolucionService.registrarDevolucion(devolucion);

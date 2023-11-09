@@ -19,16 +19,32 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Usuario {
+    /**
+     * Clave primaria de la tabla
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
+    /**
+     * Nombre del usuario
+     */
     private String nombre;
+
+    /**
+     * Apellido del usuario
+     */
     private String apellido;
 
+    /**
+     * Dni del usuario
+     */
     @Column(unique = true)
     private String dni;
 
+    /**
+     * Lista de prestamos que fueron solicitados por el usuario
+     */
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_libro",
             joinColumns = @JoinColumn(name = "usuario_id"),
