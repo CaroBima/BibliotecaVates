@@ -31,7 +31,7 @@ public class Prestamo {
     /**
      * Usuario que solicitó el prestamo
      */
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
     /**
@@ -47,7 +47,7 @@ public class Prestamo {
     /**
      * Lista de libros que fueron retirados por el usuario
      */
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "prestamo_libro",
             joinColumns = @JoinColumn(name = "prestamo_id"),
             inverseJoinColumns = @JoinColumn(name = "libro_id" ))
