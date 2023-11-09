@@ -16,6 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Implementación de la interfaz {@link IPrestamoService}.
+ * PrestamoServiceImpl es un servicio que proporciona métodos para obtener información de préstamos de libros
+ *
+ * @see IPrestamoService
+ * @see Prestamo
+ */
 
 @Service
 public class PrestamoServiceImpl implements IPrestamoService {
@@ -60,23 +67,38 @@ public class PrestamoServiceImpl implements IPrestamoService {
         return prestamoRepository.save(prestamo);
     }
 
-
+    /**
+     * Permite consultar todos aquellos préstamos que han sido solicitados por un usuario determinado
+     * @param usuario
+     * @return Listado de los prestamos
+     */
     @Override
     public List<Prestamo> consultrarPrestamosPorUsuario(Usuario usuario) {
         return prestamoRepository.findByDni(usuario.getDni());
     }
 
+    /**
+     * Consulta prestamos cuya fecha de vencimiento coincide con la pasada por parámetro
+     * @param fechaVencConsultada
+     * @return listado de prestamos con fecha de vencimiento igual a la recibida por parámetro
+     */
     @Override
     public List<Prestamo> consultarPrestamosPorFechaVenc(LocalDate fechaVencConsultada) {
 
         return prestamoRepository.findByFechaVencimiento(fechaVencConsultada);
     }
 
+    /**
+     * Permite realizar la búsqueda de todos los prestamos realizados
+     * @return listado de prestamos
+     */
     @Override
     public List<Prestamo> findAll() {
 
         return prestamoRepository.findAll();
     }
+
+
 }
 
 
